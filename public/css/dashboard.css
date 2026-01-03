@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #0b0b0b;
+    background-image: radial-gradient(circle at center, #151519 0%, #090909 100%);
+    min-height: 100vh;
+    color: white;
+    padding: 30px;
+}
+
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-pill {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.glass-pill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    padding: 1.5px;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    border-radius: 50px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: white;
+}
+
+.logout-btn-wrapper {
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+}
+
+.logout-btn {
+    width: 100%;
+    height: 100%;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.logout-btn-wrapper:hover .logout-btn::before {
+    background: linear-gradient(90deg,
+        rgba(255, 0, 0, 0.1) 0%,
+        #ff3333 50%,
+        rgba(255, 0, 0, 0.1) 100%
+    );
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+.logout-btn-wrapper:hover .logout-btn {
+    color: #ffcccc;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.text-green { color: #4CAF50; text-shadow: 0 0 10px rgba(76, 175, 80, 0.3); }
+.text-orange { color: #FF5722; text-shadow: 0 0 10px rgba(255, 87, 34, 0.3); }
+.text-blue { color: #2196F3; text-shadow: 0 0 10px rgba(33, 150, 243, 0.3); }
+.text-white { color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+
+.table-wrapper {
+    margin-top: 20px;
+}
+
+.table-grid-header, .table-row {
+    display: grid;
+    grid-template-columns: 0.5fr 1.2fr 1.2fr 1fr 1fr 2.5fr 0.5fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.table-grid-header {
+    margin-bottom: 20px;
+}
+
+.header-item {
+    height: 45px;
+    font-size: 0.85rem;
+    color: #ccc;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-item.wide {
+    grid-column: span 2;
+    width: 100%;
+}
+
+.table-row {
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.table-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.col {
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
