@@ -20,6 +20,8 @@ Route::get('/dashboard', function () {
     return redirect()->route('login');
 });
 
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware(['auth','role:admin'])->group(function () {

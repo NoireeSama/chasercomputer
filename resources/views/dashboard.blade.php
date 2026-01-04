@@ -23,11 +23,13 @@
                 <li><a href="#">Rakitan</a></li>
             </ul>
 
-            <a href="{{ route('login') }}" class="logout-btn-wrapper">
-                <div class="glass-pill logout-btn">
+            <form method="POST" action="{{ route('logout') }}" class="logout-btn-wrapper">
+                @csrf
+                <button type="submit" class="glass-pill logout-btn" style="border:none; background:none; padding:0;">
                     Keluar
-                </div>
-            </a>
+                </button>
+            </form>
+
         </nav>
 
         <div class="stats-grid">
