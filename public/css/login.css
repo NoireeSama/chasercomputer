@@ -185,6 +185,7 @@ input::placeholder {
     background: transparent;
     position: relative;
     z-index: 2;
+    text-decoration: none;
 }
 
 .footer-text {
@@ -201,4 +202,10 @@ input::placeholder {
 
 .footer-text a:hover {
     text-decoration: underline;
+}
+
+.button-masuk {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
 }
