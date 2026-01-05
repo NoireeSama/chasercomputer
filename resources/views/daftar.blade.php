@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <a href="#" class="back-btn">&lt; Kembali</a>
+    <a href="login" class="back-btn">&lt; Kembali</a>
 
     <div class="container">
         <div class="glass-card">

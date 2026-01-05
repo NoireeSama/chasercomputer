@@ -6,22 +6,24 @@
     <title>Masuk</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
 </head>
 <body>
 
-    <a href="#" class="back-btn">&lt; Kembali</a>
+    <a href="/" class="back-btn">&lt; Kembali</a>
 
     <div class="container">
         <div class="glass-card">
             <h1>Masuk</h1>
 
-            <form id="loginForm">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="input-group gradient-box">
-                    <input type="text" id="username" placeholder="Akun/Nama" required>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
                 </div>
 
                 <div class="input-group gradient-box">
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
 
                 <div class="separator">
@@ -46,6 +48,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/login.js') }}"></script>
+    {{-- <script src="{{ asset('js/login.js') }}"></script> hama --}}
 </body>
 </html>
