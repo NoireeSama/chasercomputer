@@ -34,9 +34,9 @@ Route::middleware(['auth','role:customer'])->group(function () {
         ->name('dashboard.customer');
 });
 
-Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
-Route::get('/persediaan', fn () => view('persediaan'))->name('persediaan');
-Route::get('/garansi', fn () => view('garansi'))->name('garansi');
-Route::get('/staff', fn () => view('staff'))->name('staff');
-Route::get('/cabang', fn () => view('cabang'))->name('cabang');
-Route::get('/rakitan', fn () => view('rakitan'))->name('rakitan');
+Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard');
+Route::get('/persediaan', fn () => view('admin.persediaan'))->name('persediaan');
+Route::get('/garansi', fn () => view('admin.garansi'))->name('garansi');
+Route::get('/staff', fn () => view('admin.staff'))->name('staff');
+Route::get('/cabang', fn () => view('admin.cabang'))->name('cabang');
+Route::get('/rakitan', fn () => view('admin.rakitan'))->name('rakitan');
