@@ -33,3 +33,10 @@ Route::middleware(['auth','role:customer'])->group(function () {
     Route::get('/dashboard/customer', [DashboardController::class, 'customer'])
         ->name('dashboard.customer');
 });
+
+Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+Route::get('/persediaan', fn () => view('persediaan'))->name('persediaan');
+Route::get('/garansi', fn () => view('garansi'))->name('garansi');
+Route::get('/staff', fn () => view('staff'))->name('staff');
+Route::get('/cabang', fn () => view('cabang'))->name('cabang');
+Route::get('/rakitan', fn () => view('rakitan'))->name('rakitan');
