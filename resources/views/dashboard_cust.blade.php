@@ -8,6 +8,9 @@
 </head>
 <body>
     ini halaman dashboard untuk customer
+    {{ auth()->user()->username }}
+    {{ auth()->user()->role->nama }}
+
     <form method="POST" action="{{ route('logout') }}" class="logout-btn-wrapper">
         @csrf
         <button type="submit" class="glass-pill logout-btn" style="border:none; background:none; padding:0;">
