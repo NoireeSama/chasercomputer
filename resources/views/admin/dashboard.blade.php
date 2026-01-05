@@ -4,6 +4,9 @@
 
 @section('content')
 
+{{ auth()->user()->username }}
+{{ auth()->user()->role->nama }}
+
 <div class="stats-grid">
     <div class="glass-panel stat-card">
         <h3>Jumlah Pesanan aktif</h3>

@@ -15,21 +15,22 @@
         <div class="glass-card">
             <h1>Daftar</h1>
 
-            <form id="loginForm">
+            <form method="POST" action="{{ route('daftar') }}">
+                @csrf
                 <div class="input-group gradient-box">
-                    <input type="text" id="Nama" placeholder="Nama" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
 
                 <div class="input-group gradient-box">
-                    <input type="text" id="akun" placeholder="Akun" required>
+                    <input type="text" name="email" placeholder="Email" required>
                 </div>
 
                 <div class="input-group gradient-box">
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
 
                 <div class="input-group gradient-box">
-                    <input type="password" id="password" placeholder="Ulangi Password" required>
+                    <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
                 </div>
 
                 <div class="separator">
