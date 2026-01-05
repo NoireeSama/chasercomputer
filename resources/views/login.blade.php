@@ -16,6 +16,15 @@
         <div class="glass-card">
             <h1>Masuk</h1>
 
+            @if ($errors->any())
+                <div style="background:#fee;color:#900;padding:10px;border-radius:6px;margin-bottom:10px">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-group gradient-box">

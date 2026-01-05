@@ -36,9 +36,16 @@ Route::middleware(['auth','role:customer'])->group(function () {
         ->name('dashboard.customer');
 });
 
+Route::middleware(['auth','role:admin'])->group(function () {
+    Route::get('/staff', [DashboardController::class, 'staff'])
+        ->name('staff');
+
+    Route::post('/staff', [DashboardController::class, 'tambahStaff'])
+        ->name('staff.tambah');
+});
+
 Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard');
 Route::get('/persediaan', fn () => view('admin.persediaan'))->name('persediaan');
 Route::get('/garansi', fn () => view('admin.garansi'))->name('garansi');
-Route::get('/staff', fn () => view('admin.staff'))->name('staff');
 Route::get('/cabang', fn () => view('admin.cabang'))->name('cabang');
 Route::get('/rakitan', fn () => view('admin.rakitan'))->name('rakitan');
