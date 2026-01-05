@@ -18,7 +18,7 @@
         <ul class="nav-links">
             <li><a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Pesanan</a></li>
             <li><a href="{{ route('persediaan') }}" class="{{ request()->routeIs('persediaan') ? 'active' : '' }}">Persediaan</a></li>
-            <li><a href="{{ route('garansi') }}" class="{{ request()->routeIs('garansi') ? 'active' : '' }}">Garansi aktif</a></li>
+            <li><a href="{{ route('garansi') }}" class="{{ request()->routeIs('garansi') ? 'active' : '' }}">Garansi Aktif</a></li>
             <li><a href="{{ route('staff') }}" class="{{ request()->routeIs('staff') ? 'active' : '' }}">Staff</a></li>
             <li><a href="{{ route('cabang') }}" class="{{ request()->routeIs('cabang') ? 'active' : '' }}">Cabang</a></li>
             <li><a href="{{ route('rakitan') }}" class="{{ request()->routeIs('rakitan') ? 'active' : '' }}">Rakitan</a></li>
