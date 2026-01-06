@@ -20,15 +20,17 @@ class Pesanan extends Model
 
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsTo(Kategori::class)->withDefault();
     }
 
     public function status()
     {
-        return $this->belongsTo(StatusPesanan::class, 'status_id');
+        return $this->belongsTo(StatusPesanan::class, 'status_id')->withDefault([
+            'nama' => ''
+        ]);
     }
 
-    public function detail()
+    public function detailPesanan()
     {
         return $this->hasMany(DetailPesanan::class);
     }

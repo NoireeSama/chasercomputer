@@ -17,8 +17,8 @@
 
         <ul class="nav-links">
             <li><a
-                href="{{ route('dashboard') }}"
-                class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                href="{{ route('dashboard.admin') }}"
+                class="{{ request()->routeIs('dashboard.admin') ? 'active' : '' }}">
                 Pesanan</a>
             </li>
             <li><a href="{{ route('persediaan') }}"

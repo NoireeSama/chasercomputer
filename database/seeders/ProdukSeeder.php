@@ -20,6 +20,7 @@ class ProdukSeeder extends Seeder
             ['nama' => 'Intel Core i3 12100F', 'kategori' => 'Komponen'],
             ['nama' => 'Lenovo LOQ 15', 'kategori' => 'Laptop'],
             ['nama' => 'Xiaomi G24i', 'kategori' => 'Monitor'],
+            ['nama' => 'Xiaomi G34WQi', 'kategori' => 'Monitor'],
         ];
 
         foreach ($produk as $p) {

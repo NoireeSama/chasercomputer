@@ -47,9 +47,9 @@ class PesananSeeder extends Seeder
             [
                 'kode' => 'CC-000004',
                 'tanggal' => Carbon::create(2026,1,4,20,12),
-                'kategori' => 'Rakit PC',
+                'kategori' => 'Monitor',
                 'status' => 'aktif',
-                'produk' => 'Intel Core i3 12100F',
+                'produk' => 'Xiaomi G34WQi',
             ],
         ];
 
