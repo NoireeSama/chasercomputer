@@ -4,8 +4,8 @@
 
 @section('content')
 
-{{ auth()->user()->username }}
-{{ auth()->user()->role->nama }}
+<h1>Halo {{ auth()->user()->username }}, kamu adalah  {{ auth()->user()->role->nama }}</h1> <br>
+
 
 <div class="stats-grid">
     <div class="glass-panel stat-card">
