@@ -49,3 +49,7 @@ Route::get('/persediaan', fn () => view('admin.persediaan'))->name('persediaan')
 Route::get('/garansi', fn () => view('admin.garansi'))->name('garansi');
 Route::get('/cabang', fn () => view('admin.cabang'))->name('cabang');
 Route::get('/rakitan', fn () => view('admin.rakitan'))->name('rakitan');
+
+Route::get('/rincianpesanan', function () {
+    return view('admin.branch.rincianpesanan');
+})->name('rincianpesanan');

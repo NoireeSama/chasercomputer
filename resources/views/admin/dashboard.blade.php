@@ -46,14 +46,16 @@
             <div class="col">{{ $p->kode_pesanan }}</div>
             <div class="col">{{ $p->tanggal_jam }}</div>
             <div class="col">{{ $p->kategori->nama ?? '-' }}</div>
-            <div class="col">{{ $p->status->nama ?? '-' }}</div>
+            <div class="col text-{{ $p->status->warna }}">{{ $p->status->nama ?? '-' }}</div>
             <div class="col wide">
                 {{ $p->detailPesanan->first()->produk->nama ?? '-' }}
             </div>
             <button class="menu-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
+                <a href="{{ route('rincianpesanan') }}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </a>
             </button>
         </div>
         @endforeach
