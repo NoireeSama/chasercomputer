@@ -10,22 +10,22 @@
 <div class="stats-grid">
     <div class="glass-panel stat-card">
         <h3>Jumlah Pesanan aktif</h3>
-        <p class="stat-number text-green">1</p>
+        <p class="stat-number text-green">{{ $aktif }}</p>
     </div>
 
     <div class="glass-panel stat-card">
         <h3>Dikemas</h3>
-        <p class="stat-number text-orange">2</p>
+        <p class="stat-number text-orange">{{ $dikemas }}</p>
     </div>
 
     <div class="glass-panel stat-card">
         <h3>Dalam Perjalanan</h3>
-        <p class="stat-number text-blue">0</p>
+        <p class="stat-number text-blue">{{ $perjalanan }}</p>
     </div>
 
     <div class="glass-panel stat-card">
         <h3>Selesai</h3>
-        <p class="stat-number text-white">20</p>
+        <p class="stat-number text-white">{{ $selesai }}</p>
     </div>
 </div>
 
@@ -40,61 +40,28 @@
     </div>
 
     <div class="table-content">
+        @foreach ($pesanan as $i => $p)
         <div class="table-row">
-            <div class="col">1</div>
-            <div class="col">CC-000004</div>
-            <div class="col">1-4-2026 20:12</div>
-            <div class="col">Rakit PC</div>
-            <div class="col text-green">Aktif</div>
-            <div class="col wide">Cek Detail Rakitan..</div>
+            <div class="col">{{ $i+1 }}</div>
+            <div class="col">{{ $p->kode_pesanan }}</div>
+            <div class="col">{{ $p->tanggal_jam }}</div>
+            <div class="col">{{ $p->kategori->nama ?? '-' }}</div>
+            <div class="col text-{{ $p->status->warna }}">{{ $p->status->nama ?? '-' }}</div>
+            <div class="col wide">
+                {{ $p->detailPesanan->first()->produk->nama ?? '-' }}
+            </div>
             <button class="menu-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
+                <a href="{{ route('rincianpesanan') }}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </a>
             </button>
         </div>
+        @endforeach
 
-        <div class="table-row">
-            <div class="col">2</div>
-            <div class="col">CC-000003</div>
-            <div class="col">1-4-2026 13:27</div>
-            <div class="col">Laptop</div>
-            <div class="col text-white">Selesai</div>
-            <div class="col wide">Lenovo LOQ 15</div>
-            <button class="menu-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
-            </button>
-        </div>
-
-        <div class="table-row">
-            <div class="col">3</div>
-            <div class="col">CC-000002</div>
-            <div class="col">1-3-2026 10:33</div>
-            <div class="col">Komponen</div>
-            <div class="col text-orange">Dikemas</div>
-            <div class="col wide">Intel Core i3 12100F</div>
-            <button class="menu-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
-            </button>
-        </div>
-
-        <div class="table-row">
-            <div class="col">4</div>
-            <div class="col">CC-000001</div>
-            <div class="col">1-3-2026 07:16</div>
-            <div class="col">Monitor</div>
-            <div class="col text-blue">Perjalanan</div>
-            <div class="col wide">Xiaomi G24i</div>
-            <button class="menu-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
-            </button>
-        </div>
+        @if($pesanan->isEmpty())
+            <div class="text-center text-gray-400 p-6">Belum ada pesanan</div>
+        @endif
     </div>
-
 @endsection

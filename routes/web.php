@@ -27,7 +27,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/daftar', [AuthController::class, 'daftar'])->name('daftar');
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    Route::get('/dashboard/admin', [DashboardController::class, 'admin'])
+    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])
         ->name('dashboard.admin');
 });
 
@@ -44,8 +44,12 @@ Route::middleware(['auth','role:admin'])->group(function () {
         ->name('staff.tambah');
 });
 
-Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard');
+Route::get('/dashboard', function () {return redirect()->route('dashboard.admin');});
 Route::get('/persediaan', fn () => view('admin.persediaan'))->name('persediaan');
 Route::get('/garansi', fn () => view('admin.garansi'))->name('garansi');
 Route::get('/cabang', fn () => view('admin.cabang'))->name('cabang');
 Route::get('/rakitan', fn () => view('admin.rakitan'))->name('rakitan');
+
+Route::get('/rincianpesanan', function () {
+    return view('admin.branch.rincianpesanan');
+})->name('rincianpesanan');
