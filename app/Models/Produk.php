@@ -31,7 +31,7 @@ class Produk extends Model
 
     public function persediaan()
     {
-        return $this->hasMany(Persediaan::class);
+        return $this->hasOne(Persediaan::class);
     }
 
     public function garansi()

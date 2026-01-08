@@ -23,7 +23,7 @@ class Pesanan extends Model
         return $this->belongsTo(Kategori::class)->withDefault();
     }
 
-    public function status()
+    public function statusPesanan()
     {
         return $this->belongsTo(StatusPesanan::class, 'status_id')->withDefault([
             'nama' => ''

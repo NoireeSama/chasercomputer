@@ -29,7 +29,7 @@
                 <td>{{ $g->tanggal_berakhir }}</td>
                 <td>{{ now()->diffInDays($g->tanggal_berakhir, false) }}</td>
                 <td>
-                    <span class="badge bg-success">Aktif</span>
+                    <span class="badge bg-success">{{ $g->status_garansi }}</span>
                 </td>
             </tr>
             @endforeach

@@ -46,7 +46,7 @@
             <div class="col">{{ $p->kode_pesanan }}</div>
             <div class="col">{{ $p->tanggal_jam }}</div>
             <div class="col">{{ $p->kategori->nama ?? '-' }}</div>
-            <div class="col text-{{ $p->status->warna }}">{{ $p->status->nama ?? '-' }}</div>
+            <div class="col text-{{ $p->statusPesanan->warna }}">{{ $p->statusPesanan->nama ?? '-' }}</div>
             <div class="col wide">
                 {{ $p->detailPesanan->first()->produk->nama ?? '-' }}
             </div>

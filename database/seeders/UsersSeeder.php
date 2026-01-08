@@ -17,6 +17,14 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'username' => 'mirza',
+                'email' => 'mirza@ccplus.com',
+                'password' => Hash::make('mirza123'),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'role_id' => '1'
+            ],
+            [
                 'username' => 'admin',
                 'email' => 'admin@ccplus.com',
                 'password' => Hash::make('admin123'),
@@ -31,7 +39,7 @@ class UsersSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role_id' => '2'
-            ]
+            ],
         ]);
     }
 }
