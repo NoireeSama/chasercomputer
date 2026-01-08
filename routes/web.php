@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PersediaanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,7 @@ Route::post('/daftar', [AuthController::class, 'daftar'])->name('daftar');
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'admin'])
         ->name('dashboard.admin');
+    Route::get('/persediaan', [PersediaanController::class, 'index'])->name('persediaan');
 });
 
 Route::middleware(['auth','role:customer'])->group(function () {
@@ -45,7 +47,6 @@ Route::middleware(['auth','role:admin'])->group(function () {
 });
 
 Route::get('/dashboard', function () {return redirect()->route('dashboard.admin');});
-Route::get('/persediaan', fn () => view('admin.persediaan'))->name('persediaan');
 Route::get('/garansi', fn () => view('admin.garansi'))->name('garansi');
 Route::get('/cabang', fn () => view('admin.cabang'))->name('cabang');
 Route::get('/rakitan', fn () => view('admin.rakitan'))->name('rakitan');
