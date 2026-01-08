@@ -17,11 +17,16 @@ class Garansi extends Model
         'tanggal_mulai',
         'durasi_bulan',
         'tanggal_berakhir',
-        'status_garansi',
+        'status_id',
     ];
 
     public function produk()
     {
         return $this->belongsTo(Produk::class);
+    }
+
+    public function statusGaransi()
+    {
+        return $this->belongsTo(StatusGaransi::class, 'status_id');
     }
 }

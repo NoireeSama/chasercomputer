@@ -14,10 +14,10 @@ class StatusPesananSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['nama' => 'aktif', 'warna' => 'green'],
-            ['nama' => 'dikemas', 'warna' => 'orange'],
-            ['nama' => 'perjalanan', 'warna' => 'blue'],
-            ['nama' => 'selesai', 'warna' => 'white'],
+            ['nama' => 'Aktif', 'warna' => 'green'],
+            ['nama' => 'Dikemas', 'warna' => 'orange'],
+            ['nama' => 'Perjalanan', 'warna' => 'blue'],
+            ['nama' => 'Selesai', 'warna' => 'white'],
         ];
 
         foreach ($data as $status) {

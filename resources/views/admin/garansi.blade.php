@@ -27,9 +27,11 @@
                 <td>{{ $g->nomor_seri ?? '-' }}</td>
                 <td>{{ $g->tanggal_mulai }}</td>
                 <td>{{ $g->tanggal_berakhir }}</td>
-                <td>{{ now()->diffInDays($g->tanggal_berakhir, false) }}</td>
                 <td>
-                    <span class="badge bg-success">{{ $g->status_garansi }}</span>
+                    {{ number_format(max(0, now()->diffInHours($g->tanggal_berakhir, false) / 24), 0) }} hari
+                </td>
+                <td>
+                    <span class="badge bg-success text-{{ $g->statusGaransi->warna }}">{{ $g->statusGaransi->nama }}</span>
                 </td>
             </tr>
             @endforeach

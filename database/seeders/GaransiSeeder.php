@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Produk;
 use App\Models\Garansi;
 use Carbon\Carbon;
+use App\Models\StatusGaransi;
 
 class GaransiSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class GaransiSeeder extends Seeder
      */
     public function run(): void
     {
+        $status = StatusGaransi::pluck('id', 'nama');
         $produkList = Produk::all();
 
         foreach ($produkList as $produk){
@@ -27,7 +29,7 @@ class GaransiSeeder extends Seeder
                     'tanggal_mulai' => Carbon::now()->subDays(rand(0, 30)),
                     'durasi_bulan' => 12,
                     'tanggal_berakhir' => Carbon::now()->addMonths(12),
-                    'status_garansi' => 'aktif',
+                    'status_id' => $status['Active'],
                 ]);
             }
         }

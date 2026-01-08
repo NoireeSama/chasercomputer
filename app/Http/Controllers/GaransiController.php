@@ -9,7 +9,7 @@ class GaransiController extends Controller
 {
     public function index()
     {
-        $garansi = Garansi::with('produk')->get();
+        $garansi = Garansi::with('produk', 'statusGaransi')->get();
 
         return view('admin.garansi', compact('garansi'));
     }

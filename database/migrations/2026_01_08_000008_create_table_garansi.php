@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->integer('durasi_bulan');
             $table->date('tanggal_berakhir');
-            $table->enum('status_garansi', ['aktif', 'expired', 'klaim'])->default('aktif');
+            $table->foreignId('status_id')->constrained('status_garansi')->cascadeOnDelete();
             $table->timestamps();
         });
     }
