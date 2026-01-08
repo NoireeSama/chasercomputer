@@ -13,7 +13,7 @@ class KategoriSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = ['Rakit PC', 'Laptop', 'Komponen', 'Monitor'];
+        $data = ['CPU', 'Motherboard', 'RAM', 'VGA', 'SSD', 'Laptop', 'Monitor'];
 
         foreach ($data as $nama) {
             Kategori::create(['nama' => $nama]);
