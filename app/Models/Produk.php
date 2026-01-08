@@ -33,4 +33,9 @@ class Produk extends Model
     {
         return $this->hasMany(Persediaan::class);
     }
+
+    public function garansi()
+    {
+        return $this->hasMany(Garansi::class);
+    }
 }

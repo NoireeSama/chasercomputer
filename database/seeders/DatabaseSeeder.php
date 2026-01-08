@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             StatusPesananSeeder::class,
             ProdukSeeder::class,
             PesananSeeder::class,
+            GaransiSeeder::class,
     ]);
     }
 }
