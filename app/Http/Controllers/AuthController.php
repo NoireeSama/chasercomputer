@@ -56,19 +56,19 @@ class AuthController extends Controller
     }
 
     public function daftar(Request $request)
-    {
+    { $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => 2, // default customer
+        ]);
         $request->validate([
             'username' => 'required|string|max:100',
             'email' => 'required|email|max:50|unique:users,email',
             'password' => 'required|confirmed|min:6',
         ]);
 
-        $user = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => 2, // default customer
-        ]);
+
 
         Auth::login($user);
 

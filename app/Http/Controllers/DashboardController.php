@@ -28,19 +28,19 @@ class DashboardController extends Controller
     }
 
     public function tambahStaff(Request $request)
-    {
+    {   User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => 1,
+        ]);
         $request->validate([
             'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
-        User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => 1,
-        ]);
+
 
         return redirect()->route('staff')->with('success','Staff berhasil ditambahkan');
     }

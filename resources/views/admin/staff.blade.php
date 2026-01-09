@@ -29,18 +29,7 @@
         </tr>
         <tr>
             <td><input type="password" name="password" placeholder="password" required></td>
-        </tr>
-        <tr>
-            <td><input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required></td>
-        </tr>
-        <tr>
-            <td><button>Tambah</button></td>
-        </tr>
-    </form>
-
-    <h2>Daftar Staff Admin</h2>
-
-    <table class="w-full border-collapse border border-gray-300">
+        </tr>le class="w-full border-collapse border border-gray-300">
         <thead>
             <tr>
                 <th>No</th>
@@ -66,3 +55,14 @@
     </table>
 
 @endsection
+        <tr>
+            <td><input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required></td>
+        </tr>
+        <tr>
+            <td><button>Tambah</button></td>
+        </tr>
+    </form>
+
+    <h2>Daftar Staff Admin</h2>
+
+    <tab
