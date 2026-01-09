@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Persediaan extends Model
+n extends Model
 {
     use HasFactory;
 
@@ -15,6 +14,7 @@ class Persediaan extends Model
         'produk_id',
         'stok',
     ];
+class Persediaa
 
     public function produk()
     {

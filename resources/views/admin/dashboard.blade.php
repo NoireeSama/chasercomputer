@@ -8,7 +8,15 @@
 
 
 <div class="stats-grid">
-    <div class="glass-panel stat-card">
+    <div class="gla<div class="table-wrapper">
+    <div class="table-grid-header">
+        <div class="glass-pill header-item">No</div>
+        <div class="glass-pill header-item">ID Pesanan</div>
+        <div class="glass-pill header-item">Tanggal & jam</div>
+        <div class="glass-pill header-item">Jenis</div>
+        <div class="glass-pill header-item">Status</div>
+        <div class="glass-pill header-item wide">Isi Pesanan</div>
+    </div>ss-panel stat-card">
         <h3>Jumlah Pesanan aktif</h3>
         <p class="stat-number text-green">{{ $aktif }}</p>
     </div>
@@ -29,15 +37,7 @@
     </div>
 </div>
 
-<div class="table-wrapper">
-    <div class="table-grid-header">
-        <div class="glass-pill header-item">No</div>
-        <div class="glass-pill header-item">ID Pesanan</div>
-        <div class="glass-pill header-item">Tanggal & jam</div>
-        <div class="glass-pill header-item">Jenis</div>
-        <div class="glass-pill header-item">Status</div>
-        <div class="glass-pill header-item wide">Isi Pesanan</div>
-    </div>
+
 
     <div class="table-content">
         @foreach ($pesanan as $i => $p)

@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Garansi extends Model
-{
-    use HasFactory;
-
-    protected $table = 'garansi';
+{nsi';
 
     protected $fillable = [
         'produk_id',
         'nomor_seri',
         'tanggal_mulai',
         'durasi_bulan',
+    use HasFactory;
+
+    protected $table = 'gara
         'tanggal_berakhir',
         'status_id',
     ];
