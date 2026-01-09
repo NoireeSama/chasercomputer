@@ -49,8 +49,6 @@ Route::middleware(['auth','role:admin'])->group(function () {
 });
 
 Route::get('/dashboard', function () {return redirect()->route('dashboard.admin');});
-Route::get('/cabang', fn () => view('admin.cabang'))->name('cabang');
-Route::get('/rakitan', fn () => view('admin.rakitan'))->name('rakitan');
 
 Route::get('/rincianpesanan', function () {
     return view('admin.branch.rincianpesanan');

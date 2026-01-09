@@ -33,13 +33,6 @@
                 class="{{ request()->routeIs('staff') ? 'active' : '' }}">
                 Staff</a>
             </li>
-            <li><a href="{{ route('cabang') }}"
-                class="{{ request()->routeIs('cabang') ? 'active' : '' }}">
-                Cabang</a>
-            </li>
-            <li><a href="{{ route('rakitan') }}"
-                class="{{ request()->routeIs('rakitan') ? 'active' : '' }}">Rakitan</a>
-            </li>
         </ul>
 
         <form method="POST" action="{{ route('logout') }}" class="logout-btn-wrapper">

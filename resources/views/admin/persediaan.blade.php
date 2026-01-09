@@ -27,7 +27,11 @@
                         <td>{{ $p->produk->nama }}</td>
                         <td>{{ $p->produk->kategori->nama ?? '-' }}</td>
                         <td>Rp {{ number_format($p->produk->harga, 0, ',', '.') }}</td>
-                        <td>{{ $p->stok }}</td>
+                        <td
+                            class="{{ $p->stok == 0 ? 'text-orange' : ($p->stok < 11 ? 'text-blue' : 'text-green') }}"
+                            >{{ $p->stok }}
+                        </td>
+
                         <td>{{ $p->produk->deskripsi }}</td>
                     </tr>
                 @endforeach
