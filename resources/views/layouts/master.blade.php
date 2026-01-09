@@ -17,8 +17,8 @@
 
         <ul class="nav-links">
             <li><a
-                href="{{ route('dashboard') }}"
-                class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                href="{{ route('dashboard.admin') }}"
+                class="{{ request()->routeIs('dashboard.admin') ? 'active' : '' }}">
                 Pesanan</a>
             </li>
             <li><a href="{{ route('persediaan') }}"
@@ -32,13 +32,6 @@
             <li><a href="{{ route('staff') }}"
                 class="{{ request()->routeIs('staff') ? 'active' : '' }}">
                 Staff</a>
-            </li>
-            <li><a href="{{ route('cabang') }}"
-                class="{{ request()->routeIs('cabang') ? 'active' : '' }}">
-                Cabang</a>
-            </li>
-            <li><a href="{{ route('rakitan') }}"
-                class="{{ request()->routeIs('rakitan') ? 'active' : '' }}">Rakitan</a>
             </li>
         </ul>
 

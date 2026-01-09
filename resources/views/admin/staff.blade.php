@@ -43,7 +43,7 @@
                     <td>{{ $i + 1 }}</td>
                     <td>{{ $staff->username }}</td>
                     <td>{{ $staff->role->nama }}</td>
-                    </tr>
+                </tr>
             @empty
                 <tr>
                     <td>
