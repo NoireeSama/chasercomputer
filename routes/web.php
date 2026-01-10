@@ -36,20 +36,19 @@ Route::middleware(['auth','role:admin'])->group(function () {
         ->name('staff.tambah');
 });
 Route::get('/dashboard', function () {return redirect()->route('dashboard.admin');});
-Route::get('/rincianpesanan', function () {
-    return view('admin.branch.rincianpesanan');
-})->name('rincianpesanan');
-Route::get('/product-detail', function () {
-    return view('admin.branch.detailbarang');
-})->name('product.detail');
 
-Route::get('/tambah-barang', function () {
-    return view('admin.branch.tambahbarang');
-})->name('tambah.barang');
-
-Route::get('/edituser', function () {
-    return view('admin.branch.edituser');
-})->name('edit.user');
-Route::get('/tambahuser', function () {
-    return view('admin.branch.tambahuser');
-})->name('tambah.user');
+Route::middleware(['auth','role:admin'])->group(function () {
+    Route::get('/rincianpesanan/{pesanan_id}', [DashboardController::class, 'rincianpesanan'])->name('rincianpesanan');
+    Route::post('/rincianpesanan/{pesanan_id}', [DashboardController::class, 'updatePesanan'])->name('pesanan.update');
+    Route::get('/product-detail/{produk_id}', [PersediaanController::class, 'detailProduk'])->name('product.detail');
+    Route::post('/product-detail/{produk_id}', [PersediaanController::class, 'updateProduk'])->name('produk.update');
+    Route::delete('/product-detail/{produk_id}', [PersediaanController::class, 'deleteProduk'])->name('produk.delete');
+    Route::get('/tambah-barang', [PersediaanController::class, 'createProduk'])->name('tambah.barang');
+    Route::post('/tambah-barang', [PersediaanController::class, 'storeProduk'])->name('produk.store');
+    
+    Route::get('/edituser/{user_id}', [DashboardController::class, 'editUser'])->name('edit.user');
+    Route::post('/edituser/{user_id}', [DashboardController::class, 'updateUser'])->name('user.update');
+    Route::delete('/edituser/{user_id}', [DashboardController::class, 'deleteUser'])->name('user.delete');
+    Route::get('/tambahuser', [DashboardController::class, 'createUser'])->name('tambah.user');
+    Route::post('/tambahuser', [DashboardController::class, 'storeUser'])->name('user.store');
+});
