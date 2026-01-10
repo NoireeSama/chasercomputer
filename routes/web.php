@@ -42,3 +42,14 @@ Route::get('/rincianpesanan', function () {
 Route::get('/product-detail', function () {
     return view('admin.branch.detailbarang');
 })->name('product.detail');
+
+Route::get('/tambah-barang', function () {
+    return view('admin.branch.tambahbarang');
+})->name('tambah.barang');
+
+Route::get('/edituser', function () {
+    return view('admin.branch.edituser');
+})->name('edit.user');
+Route::get('/tambahuser', function () {
+    return view('admin.branch.tambahuser');
+})->name('tambah.user');

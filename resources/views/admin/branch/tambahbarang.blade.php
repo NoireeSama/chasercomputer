@@ -7,7 +7,7 @@
 @section('content')
         <a href="{{ route('persediaan') }}" class="back-btn">&lt; Kembali</a>
     <div class="product-container">
-        <h1>Rincian Barang:</h1>
+        <h1>Tambah Barang:</h1>
         <form id="productForm">
                         <div class="image-grid">
                 <div class="glass-panel image-box" onclick="document.getElementById('file1').click()">
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>ID Barang</label>
                         <div class="glass-pill input-wrapper">
-                            <input type="text" value="LEN-001" name="kode_produk" placeholder="Masukkan ID Barang (cth: 005)" required>
+                            <input type="text" name="kode_produk" placeholder="Masukkan ID Barang (cth: 005)" required>
                         </div>
                     </div>
                     <div class="form-group">

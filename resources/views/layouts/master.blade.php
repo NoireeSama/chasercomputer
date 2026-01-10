@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class="main-container">
+    @unless(View::hasSection('hideNavbar'))
     <nav class="glass-panel navbar">
         <div class="logo">Dashboard CC+</div>
         <ul class="nav-links">
@@ -43,6 +44,7 @@
             </button>
         </form>
     </nav>
+    @endunless
         @yield('content')
 </div>
 </body>

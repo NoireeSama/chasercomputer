@@ -61,7 +61,7 @@ body {
 
 .table-grid-header, .table-row {
     display: grid;
-    grid-template-columns: 45px 1.5fr 150px 1.2fr 1.2fr 80px 60px;
+    grid-template-columns: 60px 1.5fr 150px 1.2fr 1.2fr 80px 60px;
     gap: 15px;
     align-items: center;
     width: 100%;
