@@ -23,10 +23,9 @@ class PesananController extends Controller
     {
         $request->validate([
             'status_id' => 'required|exists:status_pesanan,id',
-            'kategori_id' => 'required|exists:kategori,id',
         ]);
         $pesanan = Pesanan::findOrFail($id);
-        $pesanan->update($request->only(['status_id','kategori_id']));
+        $pesanan->update($request->only(['status_id']));
         return response()->json([
             'message' => 'Pesanan berhasil diperbarui',
             'data' => $pesanan

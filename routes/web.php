@@ -36,8 +36,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
         ->name('staff.tambah');
 });
 Route::get('/dashboard', function () {return redirect()->route('dashboard.admin');});
-Route::get('/rincianpesanan', function () {
-    return view('admin.branch.rincianpesanan');
+Route::get('/rincianpesanan/{id}', function ($id) {
+    $pesanan = \App\Models\Pesanan::with(['kategori', 'status', 'detailPesanan.produk'])->findOrFail($id);
+    return view('admin.branch.rincianpesanan', ['pesanan' => $pesanan]);
 })->name('rincianpesanan');
 Route::get('/product-detail', function () {
     return view('admin.branch.detailbarang');

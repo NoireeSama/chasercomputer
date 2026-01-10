@@ -12,7 +12,9 @@ class DashboardController extends Controller
         $dikemas = Pesanan::where('status_id', '2')->count();
         $perjalanan = Pesanan::where('status_id', '3')->count();
         $selesai = Pesanan::where('status_id', '4')->count();
-        $pesanan = Pesanan::orderBy('tanggal_jam','desc')->get();
+        $pesanan = Pesanan::with(['kategori', 'status', 'detailPesanan.produk'])
+            ->orderBy('tanggal_jam','desc')
+            ->get();
         return view('admin.dashboard', compact(
             'pesanan',
             'aktif',
