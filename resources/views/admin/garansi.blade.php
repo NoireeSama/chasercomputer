@@ -1,12 +1,9 @@
 @extends('layouts.master')
-
 @section('title', 'Persediaan')
-
 @section('content')
     <h1 class="text-white text-2xl mb-4">Halaman Garansi</h1>
     <div class="container">
     <h4>Garansi Aktif</h4>
-
     <table class="table table-striped">
         <thead>
             <tr>

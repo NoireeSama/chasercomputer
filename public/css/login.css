@@ -151,7 +151,6 @@ input::placeholder {
     font-weight: 300;
 }
 
-/* Divider Atau */
 .separator {
     margin: 25px 0;
     font-size: 0.8rem;
@@ -161,7 +160,6 @@ input::placeholder {
     justify-content: center;
 }
 
-/* Tombol Google */
 .google-btn {
     background: transparent;
     border: none;

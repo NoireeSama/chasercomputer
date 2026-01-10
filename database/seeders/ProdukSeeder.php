@@ -1,22 +1,15 @@
 <?php
-
 namespace Database\Seeders;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Persediaan;
-
 class ProdukSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $kategori = Kategori::pluck('id', 'nama');
-
         $produk = [
             [
                 'nama' => 'Intel Core i3 12100F',
@@ -68,7 +61,6 @@ class ProdukSeeder extends Seeder
                 'deskripsi' => 'Ini adalah deskripsi Monitor Xiaomi',
             ],
         ];
-
         foreach ($produk as $p) {
             $produkModel = Produk::create([
                 'nama' => $p['nama'],
@@ -77,7 +69,6 @@ class ProdukSeeder extends Seeder
                 'harga' => $p['harga'],
                 'deskripsi' => $p['deskripsi'],
             ]);
-
             Persediaan::create([
                 'produk_id' => $produkModel->id,
                 'stok' => 6,

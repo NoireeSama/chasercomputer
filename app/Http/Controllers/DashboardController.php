@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Pesanan;
-
 class DashboardController extends Controller
 {
     public function admin()
@@ -16,7 +13,6 @@ class DashboardController extends Controller
         $perjalanan = Pesanan::where('status_id', '3')->count();
         $selesai = Pesanan::where('status_id', '4')->count();
         $pesanan = Pesanan::orderBy('tanggal_jam','desc')->get();
-
         return view('admin.dashboard', compact(
             'pesanan',
             'aktif',
@@ -25,21 +21,17 @@ class DashboardController extends Controller
             'selesai'
         ));
     }
-
     public function customer()
     {
         return view('dashboard_cust');
     }
-
     public function staff()
     {
         $staffs = User::with('role')
             ->whereHas('role', fn($q) => $q->where('nama','admin'))
             ->get();
-
         return view('admin.staff', compact('staffs'));
     }
-
     public function tambahStaff(Request $request)
     {
         $request->validate([
@@ -47,14 +39,12 @@ class DashboardController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
         ]);
-
         User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => 1,
         ]);
-
         return redirect()->route('staff')->with('success','Staff berhasil ditambahkan');
     }
 }

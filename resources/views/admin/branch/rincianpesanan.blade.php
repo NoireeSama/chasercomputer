@@ -8,21 +8,16 @@
     <link rel="stylesheet" href="{{ asset('css/rincianpesan.css') }}">
 </head>
 <body>
-
     <a href="{{ route('dashboard.admin') }}" class="back-btn">&lt; Kembali</a>
-
     <div class="container">
         <h1>Rincian Pesanan:</h1>
-
         <div class="info-grid">
             <div class="glass-pill label">ID Pesanan</div>
             <div class="glass-pill label">Tanggal & jam</div>
             <div class="glass-pill label">Jenis</div>
             <div class="glass-pill label">Status</div>
-
             <div class="value-text">CC-000004</div>
             <div class="value-text">1-4-2026 20:12</div>
-
             <div class="custom-dropdown" id="jenisDropdown">
                 <div class="glass-pill dropdown-btn">
                     <span class="selected-text">Laptop</span>
@@ -36,7 +31,6 @@
                     <li data-value="Komponen">Komponen Komputer</li>
                 </ul>
             </div>
-
             <div class="custom-dropdown" id="statusDropdown">
                 <div class="glass-pill dropdown-btn status-btn" style="background: #53A92B; border-color: #53A92B;">
                     <span class="selected-text">Aktif</span>
@@ -50,14 +44,12 @@
                 </ul>
             </div>
         </div>
-
         <div class="order-table">
             <div class="table-header">
                 <div class="glass-pill col-no">No</div>
                 <div class="glass-pill col-item">Isi Pesanan</div>
                 <button id="addItemBtn" class="add-btn glass-pill">+</button>
             </div>
-
             <div class="table-body" id="itemList">
                 <div class="table-row">
                     <div class="col-no">1</div>
@@ -68,14 +60,11 @@
                 </div>
             </div>
         </div>
-
         <div class="action-buttons">
             <button id="btnSimpan" class="glass-pill action-btn btn-save">Simpan</button>
             <button id="btnHapus" class="glass-pill action-btn btn-delete">Hapus</button>
         </div>
-
     </div>
-
     <script src="{{ asset('js/rincianpesan.js') }}"></script>
 </body>
 </html>

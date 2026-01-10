@@ -1,7 +1,5 @@
 <?php
-
 namespace Database\Seeders;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Pesanan;
@@ -10,18 +8,13 @@ use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\StatusPesanan;
 use Carbon\Carbon;
-
 class PesananSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $kategori = Kategori::pluck('id', 'nama');
         $status = StatusPesanan::pluck('id', 'nama');
         $produk = Produk::pluck('id', 'nama');
-
         $pesananData = [
             [
                 'kode' => 'CC-000001',
@@ -73,7 +66,6 @@ class PesananSeeder extends Seeder
                 'produk' => 'Xiaomi G34WQi',
             ],
         ];
-
         foreach ($pesananData as $p) {
             $pesanan = Pesanan::create([
                 'kode_pesanan' => $p['kode'],
@@ -81,7 +73,6 @@ class PesananSeeder extends Seeder
                 'kategori_id' => $kategori[$p['kategori']],
                 'status_id' => $status[$p['status']],
             ]);
-
             DetailPesanan::create([
                 'pesanan_id' => $pesanan->id,
                 'produk_id' => $produk[$p['produk']],

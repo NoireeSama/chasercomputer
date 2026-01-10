@@ -1,10 +1,7 @@
 @extends('layouts.master')
-
 @section('title', 'Staff')
-
 @section('content')
     <h1>Tambah Staff Admin</h1>
-
     @if ($errors->any())
         <div style="background:#fee;color:#900;padding:10px;border-radius:6px;margin-bottom:10px">
             <ul>
@@ -37,9 +34,7 @@
             <td><button>Tambah</button></td>
         </tr>
     </form>
-
     <h2>Daftar Staff Admin</h2>
-
     <table class="w-full border-collapse border border-gray-300">
         <thead>
             <tr>
@@ -64,5 +59,4 @@
             @endforelse
         </tbody>
     </table>
-
 @endsection

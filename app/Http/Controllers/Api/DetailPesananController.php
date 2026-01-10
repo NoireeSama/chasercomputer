@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Controllers\Api;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DetailPesanan;
-
 class DetailPesananController extends Controller
 {
     public function store(Request $request)
@@ -16,9 +13,7 @@ class DetailPesananController extends Controller
             'jumlah' => 'required|integer|min:1',
             'catatan' => 'nullable|string',
         ]);
-
         $detail = DetailPesanan::create($data);
-
         return response()->json([
             'message' => 'Detail pesanan berhasil ditambahkan',
             'data' => $detail
