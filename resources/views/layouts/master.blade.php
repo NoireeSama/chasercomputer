@@ -32,11 +32,6 @@
             </li>
             <li>
                 <a href="{{ route('staff') }}" class="{{ request()->routeIs('staff') ? 'active' : '' }}">
-                   Staff
-                </a>
-            </li>
-            <li>
-                <a href="#" class="{{ request()->routeIs('user') ? 'active' : '' }}">
                    User
                 </a>
             </li>

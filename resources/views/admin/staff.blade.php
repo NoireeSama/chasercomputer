@@ -1,62 +1,33 @@
 @extends('layouts.master')
 @section('title', 'Staff')
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/staff.css') }}">
+@endpush
 @section('content')
-    <h1>Tambah Staff Admin</h1>
-    @if ($errors->any())
-        <div style="background:#fee;color:#900;padding:10px;border-radius:6px;margin-bottom:10px">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+
+    <h1>Daftar User</h1>
+
+    <div class="table-wrapper">
+        <div class="table-grid-header">
+            <div class="glass-pill header-item">No</div>
+            <div class="glass-pill header-item">User</div>
+            <div class="glass-pill header-item wide">Role</div>
         </div>
-    @endif
-    @if (session('success'))
-        <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
-    <form action="{{ route('staff.tambah') }}" method="POST">
-        @csrf
-        <tr>
-            <td><input type="text" name="username" placeholder="Username" required></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="email" placeholder="Email" required></td>
-        </tr>
-        <tr>
-            <td><input type="password" name="password" placeholder="password" required></td>
-        </tr>
-        <tr>
-            <td><input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required></td>
-        </tr>
-        <tr>
-            <td><button>Tambah</button></td>
-        </tr>
-    </form>
-    <h2>Daftar Staff Admin</h2>
-    <table class="w-full border-collapse border border-gray-300">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Username</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
+        <div class="table-content">
             @forelse ($staffs as $i => $staff)
-                <tr>
-                    <td>{{ $i + 1 }}</td>
-                    <td>{{ $staff->username }}</td>
-                    <td>{{ $staff->role->nama }}</td>
-                </tr>
+                <div class="table-row">
+                    <div class="col center">{{ $loop->iteration }}</div>
+                    <div class="col center">{{ $staff->username }}</div>
+                    <div class="col wide">{{ $staff->role->nama ?? '-' }}</div>
+                    <div class="col center">
+                        <button class="icon-btn" title="Lihat Detail"><a href="{{ route('product.detail') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></a></button>
+                    </div>
+                </div>
             @empty
-                <tr>
-                    <td>
-                        Belum ada staff admin
-                    </td>
-                </tr>
+                <div class="table-row" style="justify-content: center; padding: 30px; color: #888;">
+                    Data staff belum tersedia.
+                </div>
             @endforelse
-        </tbody>
-    </table>
+        </div>
+    </div>
 @endsection

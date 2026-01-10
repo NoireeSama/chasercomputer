@@ -28,15 +28,14 @@
             </p>
         </div>
     </div>
-        <div class="table-wrapper">
+    <div class="table-wrapper">
         <div class="table-grid-header">
             <div class="glass-pill header-item">No</div>
             <div class="glass-pill header-item">Kode</div>
-            <div class="glass-pill header-item wide">Nama Produk</div>
+            <div class="glass-pill header-item">Nama Produk</div>
             <div class="glass-pill header-item">Kategori</div>
             <div class="glass-pill header-item">Harga</div>
-            <div class="glass-pill header-item">Stok</div>
-            <div class="header-item"></div>
+            <div class="glass-pill header-item wide">Stok</div>
         </div>
         <div class="table-content">
             @forelse ($persediaan as $p)
