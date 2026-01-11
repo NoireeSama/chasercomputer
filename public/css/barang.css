@@ -1,0 +1,227 @@
+/* --- RESET & BASIC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    background-color: #0b0b0b;
+    background-image: radial-gradient(circle at center, #151519 0%, #090909 100%);
+    min-height: 100vh;
+    color: white;
+    padding: 30px 50px;
+}
+
+.main-container { max-width: 1200px; margin: 0 auto; margin-top: 30px; }
+
+/* --- 🔥 NEW GLASSMORPHISM STYLES (DARI KODE KAMU) 🔥 --- */
+
+/* 1. GLASS PANEL (Untuk Kotak Besar / Container) */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Tambahan biar nge-blur belakangnya */
+}
+
+.glass-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1.5px; /* Ketebalan border */
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5; /* Agak redup defaultnya */
+    transition: opacity 0.3s ease;
+}
+
+/* 2. GLASS PILL (Untuk Tombol & Label - Ada Border Gradient-nya) */
+.glass-pill {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    /* Hapus border biasa, karena kita pakai ::before di bawah */
+    border: none;
+}
+
+/* Teknik Masking untuk Border Gradient */
+.glass-pill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    padding: 1.5px; /* Ketebalan border */
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5; /* Agak redup defaultnya */
+    transition: opacity 0.3s ease;
+}
+
+/* Efek Hover biar border-nya makin nyala */
+.glass-pill:hover::before {
+    opacity: 1;
+}
+
+/* --- TOMBOL KEMBALI --- */
+.back-btn {
+    position: absolute; top: 30px; left: 30px;
+    text-decoration: none; color: #ccc;
+    padding: 10px 20px; border-radius: 30px; font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.05); transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.back-btn:hover { background: rgba(255, 255, 255, 0.1); color: white; border-color: white; }
+
+
+/* --- PRODUCT HERO (ATAS) --- */
+.product-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+
+/* KOLOM KIRI */
+.left-col { display: flex; flex-direction: column; gap: 20px; }
+
+.main-image-box {
+    width: 100%;
+    aspect-ratio: 1/1;
+    /* padding: 20px;  <-- HAPUS PADDING INI */
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden; /* Penting biar gambar gak keluar dari border radius */
+    border-radius: 20px; /* Memastikan sudutnya melengkung */
+}
+
+.main-image-box img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain; <-- GANTI JADI COVER */
+    object-fit: cover;
+}
+
+/* Tombol Beli (Pakai style glass-pill) */
+.buy-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem; font-weight: 600; color: white;
+    cursor: pointer;
+    /* Style glass-pill sudah handle border & background */
+}
+.buy-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* KOLOM KANAN */
+.right-col { display: flex; flex-direction: column; gap: 20px; }
+
+/* DESKRIPSI PRODUK (Dulu Border Biru, Sekarang Glass Panel biasa) */
+.info-box {
+    padding: 30px;
+    height: 100%;
+    display: flex; flex-direction: column;
+    /* Border biru DIHAPUS, ikut style .glass-panel bawaan */
+}
+
+.prod-title {
+    font-size: 1.3rem; font-weight: 500;
+    line-height: 1.5; margin-bottom: 20px;
+}
+
+.prod-price {
+    font-size: 2rem; font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 100%; height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.prod-desc {
+    font-size: 0.95rem; color: #ccc;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* --- META ROW (Stok & Kategori) --- */
+.meta-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Label Stok & Kategori (Pakai style glass-pill) */
+.meta-label {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: default;
+}
+
+.meta-label:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* --- REKOMENDASI (BAWAH) --- */
+.recommendation-section { width: 100%; }
+
+.rec-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    padding: 15px;
+    transition: 0.3s; cursor: pointer;
+    display: flex; flex-direction: column;
+}
+.product-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.05); }
+
+.prod-img-box {
+    width: 100%; height: 150px;
+    border-radius: 10px; overflow: hidden; margin-bottom: 15px;
+    background: rgba(0,0,0,0.3);
+}
+.prod-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.prod-details h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.specs { font-size: 0.75rem; color: #888; margin-bottom: 5px; }
+.price-small { font-size: 0.9rem; font-weight: 600; color: white; }
+
+@media (max-width: 1000px) {
+    .product-hero { grid-template-columns: 1fr; }
+    .rec-grid { grid-template-columns: repeat(3, 1fr); }
+}

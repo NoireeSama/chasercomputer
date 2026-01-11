@@ -134,9 +134,9 @@ body {
 /* --- CATEGORY PILLS --- */
 .category-scroll {
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
     gap: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     overflow-x: auto; /* Bisa discroll nyamping kalau kebanyakan */
     padding-bottom: 10px;
 }
@@ -167,6 +167,27 @@ body {
     display: flex; flex-direction: column;
 }
 
+.product-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1.5px; /* Ketebalan border */
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5; /* Agak redup defaultnya */
+    transition: opacity 0.3s ease;
+}
+
 .product-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.05);
@@ -181,16 +202,19 @@ body {
 .prod-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 .product-card:hover img { transform: scale(1.1); }
 
-/* No image placeholder */
-.no-image {
-    width: 100%;
-    height: 100%;
-    background: #bfbfbf;
-}
-
 .prod-details h3 { font-size: 1rem; font-weight: 600; margin-bottom: 5px; }
 .specs { font-size: 0.8rem; color: #888; margin-bottom: 10px; }
 .price { font-size: 1.1rem; font-weight: 600; color: white; }
+
+/* Truncate long descriptions with ellipsis (multiline) */
+.specs,
+.prod-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* change number for lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .glass-pill {
     position: relative;

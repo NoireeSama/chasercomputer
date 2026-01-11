@@ -86,6 +86,7 @@
 
         <div class="product-grid" id="productContainer">
             @forelse($produk as $item)
+                <a href="{{ route('customer.product.show', urlencode($item->nama)) }}" style="text-decoration:none; color:inherit;">
                 <div class="glass-panel product-card" data-kategori="{{ $item->kategori_id }}">
                     <div class="prod-img-box">
                         @php $first = $item->gambars->first(); @endphp
@@ -97,15 +98,11 @@
                     </div>
                     <div class="prod-details">
                         <h3>{{ $item->nama }}</h3>
-                        <p class="specs">
-                            @php
-                                $desc = $item->deskripsi ?? '';
-                                echo strlen($desc) > 50 ? substr($desc, 0, 50) . '...' : $desc;
-                            @endphp
-                        </p>
+                        <p class="specs">{{ $item->deskripsi }}</p>
                         <p class="price">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
                     </div>
                 </div>
+                </a>
             @empty
                 <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #ccc;">
                     <p>Tidak ada produk yang ditemukan.</p>
@@ -151,7 +148,7 @@
                         : null;
 
                     const desc = item.deskripsi || '';
-                    const descDisplay = desc.length > 50 ? desc.substring(0, 50) + '...' : desc;
+                    const descDisplay = desc; // CSS will handle truncation via multiline clamp
                     const harga = new Intl.NumberFormat('id-ID', {
                         style: 'currency',
                         currency: 'IDR',
@@ -159,6 +156,7 @@
                     }).format(item.harga);
 
                     return `
+                        <a href="/barang/${encodeURIComponent(item.nama)}" style="text-decoration:none; color:inherit;">
                         <div class="glass-panel product-card" data-kategori="${item.kategori_id}">
                             <div class="prod-img-box">
                                 ${gambar ? `<img src="${gambar}" alt="${item.nama}" onerror="this.style.display='none'">` : `<div class="no-image"></div>`}
@@ -169,6 +167,7 @@
                                 <p class="price">${harga}</p>
                             </div>
                         </div>
+                        </a>
                     `;
                 }).join('');
             })

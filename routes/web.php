@@ -51,3 +51,6 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/tambahuser', [DashboardController::class, 'createUser'])->name('tambah.user');
     Route::post('/tambahuser', [DashboardController::class, 'storeUser'])->name('user.store');
 });
+
+Route::get('/barang/{slug}', [HomeController::class, 'showProduct'])->name('customer.product.show');
+Route::post('/barang/{slug}/beli', [HomeController::class, 'buyProduct'])->name('customer.product.buy');
