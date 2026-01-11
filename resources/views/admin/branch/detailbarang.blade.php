@@ -43,9 +43,7 @@
                 @endfor
             </div>
 
-            <!-- Form Layout -->
             <div class="form-layout">
-                <!-- Left Column -->
                 <div class="left-col">
                     <div class="form-group">
                         <label>Jenis</label>
@@ -140,14 +138,12 @@
         </form>
     </div>
 
-    <!-- Hidden form untuk delete -->
     <form id="deleteForm" action="{{ route('produk.delete', $produk->id) }}" method="POST" style="display: none;">
         @csrf
         @method('DELETE')
     </form>
 
     <script>
-        // Stock counter
         const stockValue = document.getElementById('stockValue');
         const stockInput = document.getElementById('stockInput');
         const btnMinus = document.getElementById('btnMinus');
@@ -171,7 +167,6 @@
             stockInput.value = current;
         });
 
-        // Image preview
         for (let i = 1; i <= 4; i++) {
             const fileInput = document.getElementById('file' + i);
             const preview = document.getElementById('preview' + i);
@@ -188,7 +183,6 @@
             });
         }
 
-        // Custom dropdown untuk Jenis
         const jenisBtn = document.querySelector('#jenisDropdown .dropdown-btn');
         const jenisMenu = document.querySelector('#jenisMenu');
         const kategoriSelect = document.getElementById('kategoriSelect');
@@ -208,14 +202,12 @@
             });
         });
 
-        // Tutup dropdown saat klik di luar
         document.addEventListener('click', function(event) {
             if (!event.target.closest('#jenisDropdown')) {
                 jenisMenu.classList.remove('active');
             }
         });
 
-        // Format harga dengan titik pemisah ribuan
         const hargaInput = document.getElementById('hargaInput');
 
         hargaInput.addEventListener('blur', function() {
@@ -229,7 +221,6 @@
             this.value = this.value.replace(/\D/g, '');
         });
 
-        // Form submission - format harga sebelum submit
         document.getElementById('productForm').addEventListener('submit', function(e) {
             const hargaValue = hargaInput.value.replace(/\D/g, '');
             hargaInput.value = hargaValue;

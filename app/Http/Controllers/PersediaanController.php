@@ -36,7 +36,6 @@ class PersediaanController extends Controller
             'stok' => 'required|integer|min:0',
         ]);
 
-        // Update produk
         $produk->update([
             'nama' => $request->nama,
             'kategori_id' => $request->kategori_id,
@@ -45,22 +44,18 @@ class PersediaanController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        // Update stok
         $persediaan->update([
             'stok' => $request->stok,
         ]);
 
-        // Handle uploaded images (gambar1..gambar4)
         for ($i = 1; $i <= 4; $i++) {
             $field = 'gambar' . $i;
             if ($request->hasFile($field)) {
                 $file = $request->file($field);
                 $path = $file->store('produk', 'public');
 
-                // Find existing image for this posisi
                 $existing = ProdukGambar::where('produk_id', $produk->id)->where('posisi', $i)->first();
                 if ($existing) {
-                    // delete old file
                     if ($existing->path) {
                         Storage::disk('public')->delete($existing->path);
                     }
@@ -94,16 +89,13 @@ class PersediaanController extends Controller
             'stok' => 'required|integer|min:0',
         ]);
 
-        // Generate kode produk otomatis dengan auto-increment
         $prefix = $request->kode_produk_prefix;
 
-        // Cari produk dengan prefix yang sama
         $lastProduk = Produk::where('kode_produk', 'LIKE', $prefix . '-%')
             ->orderBy('kode_produk', 'DESC')
             ->first();
 
         if ($lastProduk) {
-            // Extract angka dari kode terakhir
             $lastCode = $lastProduk->kode_produk;
             preg_match('/(\d+)$/', $lastCode, $matches);
             $lastNumber = isset($matches[1]) ? intval($matches[1]) : 0;
@@ -112,13 +104,10 @@ class PersediaanController extends Controller
             $nextNumber = 1;
         }
 
-        // Generate kode produk dengan format PREFIX-NNN (3 digit)
         $kodeProduk = $prefix . '-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
 
-        // Hapus format harga jika ada
         $harga = str_replace(['.', ','], '', $request->harga);
 
-        // Create produk
         $produk = Produk::create([
             'nama' => $request->nama,
             'kategori_id' => $request->kategori_id,
@@ -127,7 +116,6 @@ class PersediaanController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        // Handle uploaded images (gambar1..gambar4)
         for ($i = 1; $i <= 4; $i++) {
             $field = 'gambar' . $i;
             if ($request->hasFile($field)) {
@@ -140,7 +128,6 @@ class PersediaanController extends Controller
                 ]);
             }
         }
-        // Create persediaan
         Persediaan::create([
             'produk_id' => $produk->id,
             'stok' => $request->stok,
@@ -154,12 +141,10 @@ class PersediaanController extends Controller
         $produk = Produk::findOrFail($produk_id);
         $persediaan = Persediaan::where('produk_id', $produk_id)->first();
 
-        // Hapus persediaan terlebih dahulu
         if ($persediaan) {
             $persediaan->delete();
         }
 
-        // Hapus gambar file terkait
         $gambars = ProdukGambar::where('produk_id', $produk->id)->get();
         foreach ($gambars as $g) {
             if ($g->path) {
@@ -168,7 +153,6 @@ class PersediaanController extends Controller
             $g->delete();
         }
 
-        // Hapus produk
         $produk->delete();
 
         return redirect()->route('persediaan')->with('success', 'Produk berhasil dihapus');

@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/inventory.css') }}">
 @endpush
 @section('content')
+        <h1 class="text-white text-2xl mb-4">Halaman Persediaan</h1>
         <div class="stats-grid" style="margin-top: 20px;">
                 <div class="glass-panel stat-card">
             <h3>Total Produk</h3>

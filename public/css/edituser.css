@@ -1,6 +1,5 @@
-/* --- LAYOUT UTAMA --- */
 .center-wrapper {
-    min-height: 80vh; /* Biar konten ada di tengah layar vertikal */
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,11 +7,10 @@
 
 .form-container {
     width: 100%;
-    max-width: 600px; /* Lebar maksimal form */
+    max-width: 600px;
     padding: 20px;
 }
 
-/* Back Button (Konsisten sama page lain) */
 .back-btn {
     position: absolute; top: 30px; left: 30px;
     text-decoration: none; color: #ccc; border: 1px solid #333;
@@ -21,7 +19,6 @@
 }
 .back-btn:hover { background: rgba(255, 255, 255, 0.1); color: white; }
 
-/* --- FORM ELEMENTS --- */
 .form-group {
     margin-bottom: 30px;
 }
@@ -35,7 +32,6 @@
     letter-spacing: 0.5px;
 }
 
-/* Glass Input Wrapper */
 .input-wrapper {
     position: relative;
     background: rgba(255, 255, 255, 0.03);
@@ -62,15 +58,14 @@
     opacity: 0.7;
 }
 
-/* --- CUSTOM DROPDOWN (CENTERED) --- */
 .center-content {
     display: flex;
-    justify-content: center; /* Biar dropdown ada di tengah */
+    justify-content: center;
 }
 
 .custom-dropdown {
     position: relative;
-    width: 200px; /* Ukuran dropdown lebih kecil sesuai gambar */
+    width: 200px;
 }
 
 .glass-pill.dropdown-btn {
@@ -91,7 +86,6 @@
     border-color: white;
 }
 
-/* Menu Dropdown */
 .dropdown-menu {
     position: absolute;
     top: 55px;
@@ -102,7 +96,7 @@
     border-radius: 15px;
     list-style: none;
     padding: 10px 0;
-    display: none; /* Hidden default */
+    display: none;
     z-index: 100;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     text-align: center;
@@ -131,7 +125,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- ACTION BUTTONS --- */
 .action-buttons {
     display: flex;
     justify-content: center;
@@ -152,16 +145,15 @@
     transition: all 0.3s ease;
 }
 
-/* Hover Effects */
 .btn-save:hover {
-    border-color: #53A92B; /* Hijau */
+    border-color: #53A92B;
     background: rgba(83, 169, 43, 0.1);
     color: #53A92B;
     box-shadow: 0 0 15px rgba(83, 169, 43, 0.2);
 }
 
 .btn-delete:hover {
-    border-color: #FF2424; /* Merah */
+    border-color: #FF2424;
     background: rgba(255, 36, 36, 0.1);
     color: #FF2424;
     box-shadow: 0 0 15px rgba(255, 36, 36, 0.2);

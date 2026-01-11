@@ -87,7 +87,6 @@ class DashboardController extends Controller
             'role_id' => $request->role_id,
         ];
 
-        // Hanya update password jika diisi
         if ($request->filled('password')) {
             $updateData['password'] = Hash::make($request->password);
         }

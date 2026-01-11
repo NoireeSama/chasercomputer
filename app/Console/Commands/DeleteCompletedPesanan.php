@@ -9,18 +9,8 @@ use Carbon\Carbon;
 
 class DeleteCompletedPesanan extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'pesanan:purge-completed';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Delete completed orders (Selesai) older than 10 minutes';
 
     public function handle()
@@ -43,7 +33,6 @@ class DeleteCompletedPesanan extends Command
             return 0;
         }
 
-        // Delete in chunks to avoid memory issues
         $query->chunkById(100, function ($items) {
             foreach ($items as $item) {
                 $item->delete();

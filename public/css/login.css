@@ -207,3 +207,12 @@ input::placeholder {
     text-decoration: none;
     font-weight: 400;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: 'Poppins', sans-serif !important;
+}

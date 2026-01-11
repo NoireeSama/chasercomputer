@@ -1,4 +1,3 @@
-/* --- RESET & BASIC --- */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
 body {
@@ -6,12 +5,11 @@ body {
     background-image: radial-gradient(circle at center, #151519 0%, #090909 100%);
     min-height: 100vh;
     color: white;
-    padding: 30px 50px; /* Padding biar ga mepet layar */
+    padding: 30px 50px;
 }
 
 .main-container { max-width: 1400px; margin: 0 auto; }
 
-/* --- GLASS UTILITIES (Shared) --- */
 .glass-pill {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 50px;
@@ -26,7 +24,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* --- NAVBAR (The Big Pill) --- */
 .navbar {
     display: flex;
     align-items: center;
@@ -35,11 +32,9 @@ body {
     margin-bottom: 30px;
     justify-content: space-between;
     position: relative;
-    /* Gradient Border khusus Navbar */
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-/* Divider Tegak Lurus */
 .divider {
     width: 1px;
     height: 60%;
@@ -47,12 +42,10 @@ body {
     margin: 0 20px;
 }
 
-/* Brand */
 .brand-name { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px; white-space: nowrap; }
 
-/* Search Center */
 .nav-center {
-    flex-grow: 1; /* Ngisi ruang kosong di tengah */
+    flex-grow: 1;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -63,7 +56,6 @@ body {
     color: white; width: 100%; font-size: 0.95rem;
 }
 
-/* Auth Right */
 .nav-right { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
 
 .user-name { font-weight: 600; font-size: 0.95rem; color: #eee; }
@@ -85,12 +77,11 @@ body {
 .btn-logout:hover { color: #ff2424; text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
 
 
-/* --- HERO SLIDESHOW --- */
 .hero-section {
     width: 100%;
-    height: 400px; /* Tinggi Slide */
+    height: 400px;
     margin-bottom: 30px;
-    overflow: hidden; /* Biar gambar yg geser ga bocor */
+    overflow: hidden;
     position: relative;
 }
 
@@ -98,18 +89,18 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s ease-in-out; /* Animasi Geser */
+    transition: transform 0.8s ease-in-out;
 }
 
 .slide {
-    min-width: 100%; /* Setiap slide menuhin container */
+    min-width: 100%;
     height: 100%;
     position: relative;
 }
 
 .slide img {
     width: 100%; height: 100%; object-fit: cover;
-    opacity: 0.6; /* Biar agak gelap dikit sesuai tema */
+    opacity: 0.6;
 }
 
 .slide-caption {
@@ -119,7 +110,6 @@ body {
 .slide-caption h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 5px; }
 .slide-caption p { font-size: 1.1rem; color: #ccc; }
 
-/* Dots Indicator */
 .slider-dots {
     position: absolute; bottom: 20px; right: 20px;
     display: flex; gap: 10px; z-index: 10;
@@ -130,14 +120,12 @@ body {
 }
 .dot.active { background: white; transform: scale(1.2); }
 
-
-/* --- CATEGORY PILLS --- */
 .category-scroll {
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
     gap: 15px;
     margin-bottom: 40px;
-    overflow-x: auto; /* Bisa discroll nyamping kalau kebanyakan */
+    overflow-x: auto;
     padding-bottom: 10px;
 }
 .category-scroll::-webkit-scrollbar { height: 5px; }
@@ -152,10 +140,8 @@ body {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-/* --- PRODUCT GRID --- */
 .product-grid {
     display: grid;
-    /* Grid Responsif: Otomatis nentuin jumlah kolom */
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 25px;
 }
@@ -206,11 +192,10 @@ body {
 .specs { font-size: 0.8rem; color: #888; margin-bottom: 10px; }
 .price { font-size: 1.1rem; font-weight: 600; color: white; }
 
-/* Truncate long descriptions with ellipsis (multiline) */
 .specs,
 .prod-desc {
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* change number for lines to show */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
