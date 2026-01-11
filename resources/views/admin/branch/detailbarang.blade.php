@@ -29,26 +29,18 @@
             @csrf
             <!-- Image Grid -->
             <div class="image-grid">
-                <div class="glass-panel image-box" onclick="document.getElementById('file1').click()">
-                    <span class="placeholder-text">+ Foto</span>
-                    <input type="file" id="file1" name="gambar1" hidden accept="image/*">
-                    <img src="" class="img-preview" id="preview1">
-                </div>
-                <div class="glass-panel image-box" onclick="document.getElementById('file2').click()">
-                    <span class="placeholder-text">+ Foto</span>
-                    <input type="file" id="file2" name="gambar2" hidden accept="image/*">
-                    <img src="" class="img-preview" id="preview2">
-                </div>
-                <div class="glass-panel image-box" onclick="document.getElementById('file3').click()">
-                    <span class="placeholder-text">+ Foto</span>
-                    <input type="file" id="file3" name="gambar3" hidden accept="image/*">
-                    <img src="" class="img-preview" id="preview3">
-                </div>
-                <div class="glass-panel image-box" onclick="document.getElementById('file4').click()">
-                    <span class="placeholder-text">+ Foto</span>
-                    <input type="file" id="file4" name="gambar4" hidden accept="image/*">
-                    <img src="" class="img-preview" id="preview4">
-                </div>
+                @for($i=1; $i<=1; $i++)
+                    @php $img = $produk->gambars->where('posisi', $i)->first(); @endphp
+                    <div class="glass-panel image-box" onclick="document.getElementById('file{{ $i }}').click()">
+                        <span class="placeholder-text">+ Foto</span>
+                        <input type="file" id="file{{ $i }}" name="gambar{{ $i }}" hidden accept="image/*">
+                        @if($img)
+                            <img src="{{ asset('storage/' . $img->path) }}" class="img-preview" id="preview{{ $i }}">
+                        @else
+                            <img src="" class="img-preview" id="preview{{ $i }}" style="display:none">
+                        @endif
+                    </div>
+                @endfor
             </div>
 
             <!-- Form Layout -->

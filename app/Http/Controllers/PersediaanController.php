@@ -4,18 +4,20 @@ use Illuminate\Http\Request;
 use App\Models\Persediaan;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\ProdukGambar;
+use Illuminate\Support\Facades\Storage;
 
 class PersediaanController extends Controller
 {
     public function index()
     {
-        $persediaan = Persediaan::with('produk.kategori')->get();
+        $persediaan = Persediaan::with('produk.kategori','produk.gambars')->get();
         return view('admin.persediaan', compact('persediaan'));
     }
 
     public function detailProduk($produk_id)
     {
-        $produk = Produk::with(['kategori', 'persediaan'])->findOrFail($produk_id);
+        $produk = Produk::with(['kategori', 'persediaan','gambars'])->findOrFail($produk_id);
         $kategoris = Kategori::all();
         return view('admin.branch.detailbarang', compact('produk', 'kategoris'));
     }
@@ -48,6 +50,30 @@ class PersediaanController extends Controller
             'stok' => $request->stok,
         ]);
 
+        // Handle uploaded images (gambar1..gambar4)
+        for ($i = 1; $i <= 4; $i++) {
+            $field = 'gambar' . $i;
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $path = $file->store('produk', 'public');
+
+                // Find existing image for this posisi
+                $existing = ProdukGambar::where('produk_id', $produk->id)->where('posisi', $i)->first();
+                if ($existing) {
+                    // delete old file
+                    if ($existing->path) {
+                        Storage::disk('public')->delete($existing->path);
+                    }
+                    $existing->update(['path' => $path]);
+                } else {
+                    ProdukGambar::create([
+                        'produk_id' => $produk->id,
+                        'path' => $path,
+                        'posisi' => $i,
+                    ]);
+                }
+            }
+        }
         return redirect()->route('persediaan')->with('success', 'Produk berhasil diperbarui');
     }
 
@@ -101,6 +127,19 @@ class PersediaanController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
+        // Handle uploaded images (gambar1..gambar4)
+        for ($i = 1; $i <= 4; $i++) {
+            $field = 'gambar' . $i;
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $path = $file->store('produk', 'public');
+                ProdukGambar::create([
+                    'produk_id' => $produk->id,
+                    'path' => $path,
+                    'posisi' => $i,
+                ]);
+            }
+        }
         // Create persediaan
         Persediaan::create([
             'produk_id' => $produk->id,
@@ -118,6 +157,15 @@ class PersediaanController extends Controller
         // Hapus persediaan terlebih dahulu
         if ($persediaan) {
             $persediaan->delete();
+        }
+
+        // Hapus gambar file terkait
+        $gambars = ProdukGambar::where('produk_id', $produk->id)->get();
+        foreach ($gambars as $g) {
+            if ($g->path) {
+                Storage::disk('public')->delete($g->path);
+            }
+            $g->delete();
         }
 
         // Hapus produk

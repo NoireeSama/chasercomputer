@@ -7,6 +7,7 @@ use App\Models\Pesanan;
 use App\Models\StatusPesanan;
 use App\Models\Kategori;
 use App\Models\Role;
+use App\Models\Produk;
 class DashboardController extends Controller
 {
     public function admin()
@@ -52,7 +53,9 @@ class DashboardController extends Controller
 
     public function customer()
     {
-        return view('dashboard_cust');
+        $produk = Produk::with('gambars')->get();
+        $kategori = Kategori::all();
+        return view('customer.home', compact('produk', 'kategori'));
     }
     public function staff()
     {

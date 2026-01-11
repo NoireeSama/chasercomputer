@@ -12,10 +12,16 @@ class Produk extends Model
         'kode_produk',
         'harga',
         'deskripsi',
+        'gambar',
     ];
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
+    }
+
+    public function gambars()
+    {
+        return $this->hasMany(ProdukGambar::class, 'produk_id')->orderBy('posisi');
     }
     public function detailPesanan()
     {

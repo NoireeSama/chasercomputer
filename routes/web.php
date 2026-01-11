@@ -4,9 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PersediaanController;
 use App\Http\Controllers\GaransiController;
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -45,7 +44,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::delete('/product-detail/{produk_id}', [PersediaanController::class, 'deleteProduk'])->name('produk.delete');
     Route::get('/tambah-barang', [PersediaanController::class, 'createProduk'])->name('tambah.barang');
     Route::post('/tambah-barang', [PersediaanController::class, 'storeProduk'])->name('produk.store');
-    
+
     Route::get('/edituser/{user_id}', [DashboardController::class, 'editUser'])->name('edit.user');
     Route::post('/edituser/{user_id}', [DashboardController::class, 'updateUser'])->name('user.update');
     Route::delete('/edituser/{user_id}', [DashboardController::class, 'deleteUser'])->name('user.delete');
