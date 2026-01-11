@@ -126,7 +126,7 @@
                             <p>Rp. </p>
                             <input type="text"
                                    name="harga"
-                                   value="{{ number_format($produk->harga, 0, ',', '.') }}"
+                                   value="{{ $produk->harga }}"
                                    id="hargaInput"
                                    placeholder="Masukkan harga barang..."
                                    required>
