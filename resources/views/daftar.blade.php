@@ -8,13 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
-
     <a href="login" class="back-btn">&lt; Kembali</a>
-
     <div class="container">
         <div class="glass-card">
             <h1>Daftar</h1>
-
             @if ($errors->any())
                 <div style="background:#fee;color:#900;padding:10px;border-radius:6px;margin-bottom:10px">
                     <ul>
@@ -29,23 +26,18 @@
                 <div class="input-group gradient-box">
                     <input type="text" name="username" placeholder="Username" required>
                 </div>
-
                 <div class="input-group gradient-box">
                     <input type="text" name="email" placeholder="Email" required>
                 </div>
-
                 <div class="input-group gradient-box">
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
-
                 <div class="input-group gradient-box">
                     <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
                 </div>
-
                 <div class="separator">
                     <span>Atau</span>
                 </div>
-
                 <button type="button" class="google-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
                         <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
@@ -54,16 +46,13 @@
                         <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
                     </svg>
                 </button>
-
                 <div class="gradient-box">
                     <button type="submit" class="login-btn">Masuk</button>
                 </div>
             </form>
-
             <p class="footer-text">Sudah punya akun? <a href="{{ route('login') }}">Masuk Sekarang!</a></p>
         </div>
     </div>
-
     <script src="{{ asset('js/login.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,246 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    background-color: #0b0b0b;
+    background-image: radial-gradient(circle at center, #151519 0%, #090909 100%);
+    min-height: 100vh;
+    color: white;
+    padding: 30px 50px;
+}
+
+.main-container { max-width: 1400px; margin: 0 auto; }
+
+.glass-pill {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 25px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.divider {
+    width: 1px;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 20px;
+}
+
+.brand-name { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px; white-space: nowrap; }
+
+.nav-center {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-input {
+    background: transparent; border: none; outline: none;
+    color: white; width: 100%; font-size: 0.95rem;
+}
+
+.nav-right { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
+
+.user-name { font-weight: 600; font-size: 0.95rem; color: #eee; }
+
+.nav-btn {
+    text-decoration: none; color: #ccc; font-size: 0.9rem;
+    transition: 0.3s; background: transparent; border: none; cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+.nav-btn:hover { color: white; }
+
+.btn-highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1);
+}
+.btn-highlight:hover { background: rgba(255, 255, 255, 0.2); border-color: white; }
+
+.btn-logout { color: #ff6b6b; }
+.btn-logout:hover { color: #ff2424; text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+
+
+.hero-section {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.6;
+}
+
+.slide-caption {
+    position: absolute; bottom: 40px; left: 40px;
+    z-index: 2;
+}
+.slide-caption h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 5px; }
+.slide-caption p { font-size: 1.1rem; color: #ccc; }
+
+.slider-dots {
+    position: absolute; bottom: 20px; right: 20px;
+    display: flex; gap: 10px; z-index: 10;
+}
+.dot {
+    width: 10px; height: 10px; background: rgba(255,255,255,0.3);
+    border-radius: 50%; cursor: pointer; transition: 0.3s;
+}
+.dot.active { background: white; transform: scale(1.2); }
+
+.category-scroll {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    gap: 15px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+.category-scroll::-webkit-scrollbar { height: 5px; }
+.category-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+.cat-btn {
+    padding: 10px 30px; color: #ffffff; cursor: pointer; white-space: nowrap; transition: 0.3s;
+}
+.cat-btn:hover, .cat-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white; border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    padding: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex; flex-direction: column;
+}
+
+.product-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1.5px; /* Ketebalan border */
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5; /* Agak redup defaultnya */
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.prod-img-box {
+    width: 100%; height: 180px;
+    border-radius: 10px; overflow: hidden; margin-bottom: 15px;
+    background: rgba(0,0,0,0.3);
+}
+.prod-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.product-card:hover img { transform: scale(1.1); }
+
+.prod-details h3 { font-size: 1rem; font-weight: 600; margin-bottom: 5px; }
+.specs { font-size: 0.8rem; color: #888; margin-bottom: 10px; }
+.price { font-size: 1.1rem; font-weight: 600; color: white; }
+
+.specs,
+.prod-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.glass-pill {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.glass-pill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    padding: 1.5px;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        #ffffff 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.logout-btn-wrapper {
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+}
+
+.logout-btn {
+    width: 100%;
+    height: 100%;
+    font-size: 0.9rem;
+    color: white;
+}
+
