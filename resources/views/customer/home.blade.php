@@ -144,7 +144,7 @@
 
                 container.innerHTML = data.produk.map(item => {
                     const gambar = item.gambar_utama
-                        ? '{{ asset("storage/") }}' + item.gambar_utama
+                        ? `{{ asset('storage') }}/${item.gambar_utama}`
                         : null;
 
                     const desc = item.deskripsi || '';
